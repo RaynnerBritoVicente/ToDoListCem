@@ -4,15 +4,17 @@ const pool = require("./database")
 
 const app = express();
 
+const PORT = process.env.PORT || 3001;
+
 app.use(express.json());
 app.use(cors());
 
-app.get("/cadastro", (req, res) => {
+app.get("/registrar", (req, res) => {
     console.log(req.body);
     res.send("Resposta bem sucedida: " + req.body);
 });
 
-app.post("/cadastro", (req, res) => {
+app.post("/registrar", (req, res) => {
     const nome = req.body["nome"];
     const email = req.body["email"];
     const senha = req.body["senha"];
@@ -33,4 +35,4 @@ app.post("/cadastro", (req, res) => {
     res.send("Resposta bem sucedida: " + req.body);
 });
 
-app.listen(3001, () => console.log("Server is running on localhost:3001"));
+app.listen(PORT, () => console.log(`Server is running on localhost:${PORT}`));
